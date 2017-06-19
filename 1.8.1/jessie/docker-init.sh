@@ -2,12 +2,7 @@
 
 DOCKER_DIR=".docker"
 
-RUBY_DIR="$DOCKER_DIR/ruby"
-RBENV_DIR="$HOME/.rbenv/versions/2.2.3"
-echo "Copying files from $RBENV_DIR (container) to $RUBY_DIR (host) ..." \
-  && mkdir -p $RUBY_DIR \
-  && cp -r $RBENV_DIR/* $RUBY_DIR \
-  && echo "Done."
+mkdir -p $DOCKER_DIR
 
 DOCKER_FILES_DIR="$HOME/recipes"
 echo "Copying files from $DOCKER_FILES_DIR (container) to project directory (host) ..." \

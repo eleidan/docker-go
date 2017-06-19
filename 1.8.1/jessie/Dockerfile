@@ -1,10 +1,10 @@
 FROM eleidan/buildpack-deps:jessie
 
 LABEL maintainer="Oleg Kulyk" \
-      description="Go 1.8.1 based on Debian Jessie" \
+      description="Go 1.8.1 based on Debian GNU/Linux 8 (jessie)" \
       init="docker run -it --rm -v $(pwd):/home/phantom/app eleidan/go:1.8.1-jessie docker-init.sh" \
       run="docker run -it --rm -v $(pwd):/home/phantom/app eleidan/go:1.8.1-jessie" \
-      version="2017-05-16"
+      version="2017-06-20"
 
 ENV GOLANG_VERSION=1.8.1 \
     SERVICE_NAME="go:1.8.1-jessie"
@@ -44,7 +44,9 @@ ENV GOPATH="$HOME/app" \
 WORKDIR $GOPATH
 
 COPY go-wrapper docker-init.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-init.sh
+RUN chmod +x \
+      /usr/local/bin/docker-init.sh\
+      /usr/local/bin/go-wrapper
 
 ### Needed for the docker-init.sh script
 COPY recipes $HOME/recipes
